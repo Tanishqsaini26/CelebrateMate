@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page - Birthday Reminder</title>
+    <link rel="stylesheet" href="style3.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1 id="welcome-heading">Welcome</h1>
+            <p>Manage your birthday reminders</p>
+        </div>
+        <div class="profile-content">
+            <form id="reminderForm">
+                <div class="input-box">
+                    <label for="name">Friend's Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="input-box">
+                    <label for="date">Birthday</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="input-box">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <input type="hidden" id="editIndex">
+                <button type="button" class="btn" onclick="saveReminder()">Add Reminder</button>
+            </form>
+            <div class="reminders-list">
+                <h2>Upcoming Birthdays</h2>
+                <ul id="reminders"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("2UoOLWJQbthEmQkr0");
+        })();
+    </script>
+    <script src="dashboard.js"></script>
+    <script>
+           const username = localStorage.getItem('username');
+           document.getElementById('welcome-heading').innerText = `Welcome, ${username}!`;
+    </script>
+</body>
+</html>
